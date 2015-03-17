@@ -1,0 +1,86 @@
+{% block wysiwyg_widget %}
+    {% spaceless %}
+        <div>
+            {# Retrieve the CKEditor Configuration from PHP if it is set #}
+            {% if attr.ck_config is defined %}
+                {% set ck_config = attr.ck_config | json_encode %}
+                {% set attr = attr|merge({"ck_config": null}) %}
+            {% endif %}
+
+            {# The textarea that will be replaced by CKEditor#}
+            <textarea {{ block('widget_attributes') }}>{% if value is not empty %}{{ value }}{% endif %}</textarea>
+        </div>
+
+        {% block ck_scripts %}
+            <script>
+                var message_shown = false;
+
+                // Continuously check every 200 ms if CKEditor is loaded to make lazy loading possible
+                var ckeditor_interval_{{ id }} = setInterval(function(){
+                    if( typeof window.CKEDITOR != 'undefined' ){
+
+                        {% if ck_config is defined %}
+                        CKEDITOR.replace( '{{ full_name }}', {{ ck_config | raw }} );
+                        {% else %}
+                        CKEDITOR.replace( '{{ full_name }}', {language: "{{ app.request.getLocale() }}"} );
+                        {% endif %}
+
+                        window.clearInterval( ckeditor_interval_{{ id }} );
+                    } else {
+                        if( message_shown == false ){
+                            {% if app.environment == "dev" %}
+                            console.log( "Add CKEDITOR to the html ( bundles/recognizewysiwyg/ckeditor/ckeditor.js )" );
+                            {% endif %}
+
+                            message_shown = true;
+                        }
+                    }
+                }, 200);
+            </script>
+        {% endblock %}
+
+    {% endspaceless %}
+{% endblock %}
+
+{% block inline_wysiwyg_widget %}
+    {% spaceless %}
+        <div>
+            {# Retrieve the CKEditor Configuration from PHP if it is set #}
+            {% if attr.ck_config is defined %}
+                {% set ck_config = attr.ck_config | json_encode %}
+                {% set attr = attr|merge({"ck_config": null}) %}
+            {% endif %}
+
+            {# The textarea that will be replaced by CKEditor#}
+            <textarea {{ block('widget_attributes') }}>{% if value is not empty %}{{ value }}{% endif %}</textarea>
+        </div>
+
+        {% block ck_inline_scripts %}
+            <script>
+                var message_shown = false;
+
+                // Continuously check every 200 ms if CKEditor is loaded to make lazy loading possible
+                var ckeditor_interval_{{ id }} = setInterval(function(){
+                    if( typeof window.CKEDITOR != 'undefined' ){
+                        {% if ck_config is defined %}
+                        CKEDITOR.inline( '{{ full_name }}', {{ ck_config | raw }} );
+                        {% else %}
+                        CKEDITOR.inline( '{{ full_name }}', {language: "{{ app.request.getLocale() }}"} );
+                        {% endif %}
+
+                        window.clearInterval( ckeditor_interval_{{ id }} );
+                    } else {
+                        if( message_shown == false ){
+                            {% if app.environment == "dev" %}
+                            console.log( "Add CKEDITOR to the html ( bundles/recognizewysiwyg/ckeditor/ckeditor.js )" );
+                            {% endif %}
+
+                            message_shown = true;
+                        }
+                    }
+                }, 200);
+            </script>
+        {% endblock %}
+
+    {% endspaceless %}
+{% endblock %}
