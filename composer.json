@@ -13,8 +13,7 @@
   ],
   "require": {
     "php": ">=5.3.3",
-    "symfony/symfony": "2.5.*",
-    "twig/extensions": "~1.0"
+    "symfony/symfony": "2.5.*"
   },
   "target-dir": "Recognize/WysiwygBundle",
   "autoload": {
