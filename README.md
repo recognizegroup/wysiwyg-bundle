@@ -5,9 +5,9 @@ A bundle that allows you to quickly render a WYSIWYG editor ( currently supports
 Simply add a 'wysiwyg' element to your form and you're good to go.
 
 Features
- * Can render regular and inline WYSIWYG editors.
- * Supports automatic language detection from the Symfony locale
- * Allows seperate configuration per wysiwyg element
+* Can render regular and inline WYSIWYG editors.
+* Supports automatic language detection from the Symfony locale
+* Allows seperate configuration per wysiwyg element
 
 
 Installation
