@@ -62,12 +62,12 @@ twig:
 Configuration
 -------------
 
-To configure your WYSIWYG element, add the "ck_config" key to the attr fields and fill it with an array containing the configuration.
+To configure your WYSIWYG element, add the "ck_config" key to the options and fill it with an array containing the configuration.
 For example:
 
 ```php
 	$formbuilder->add('content', 'wysiwyg', 
-		array('attr' => ('ck_config' => array("language" => "nl") ) ) );
+		array('ck_config' => array("language" => "nl") ) );
 ```
 
 This will add the following JSON object into the CKEditor widget
@@ -84,7 +84,7 @@ Or, use the configuration builder to quickly create a config object for the CKEd
 	$configbuilder = new CKConfigBuilder();
 	$configbuilder->setLanguage("nl");
 	$formbuilder->add('content', 'wysiwyg', 
-		array('attr' => ('ck_config' => $configbuilder->build() ) ) );
+		array('ck_config' => $configbuilder->build() ) );
 ```
 
 

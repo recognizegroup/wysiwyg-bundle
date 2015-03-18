@@ -31,7 +31,7 @@ class RecognizeWysiwygExtensionTest extends \PHPUnit_Framework_TestCase{
     }
 
     public function testAlias(){
-        $this->assertTrue( "recognize_wysiwyg", $this->extension->getAlias() );
+        $this->assertEquals( "recognize_wysiwyg", $this->extension->getAlias() );
     }
 
     public function testGetConfigWithOverrideValues() {
