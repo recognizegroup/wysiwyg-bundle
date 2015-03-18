@@ -2,7 +2,7 @@
 use Recognize\WysiwygBundle\DependencyInjection\RecognizeWysiwygExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class RecognizeWysiwygExtensionTest extends PHPUnit_Framework_TestCase{
+class RecognizeWysiwygExtensionTest extends \PHPUnit_Framework_TestCase{
 
     /**
      * @var RecognizeWysiwygExtension
@@ -28,6 +28,10 @@ class RecognizeWysiwygExtensionTest extends PHPUnit_Framework_TestCase{
 
         $this->assertTrue($container->hasParameter($this->root . ".config"));
         $config = $container->getParameter($this->root . ".config");
+    }
+
+    public function testAlias(){
+        $this->assertTrue( "recognize_wysiwyg", $this->extension->getAlias() );
     }
 
     public function testGetConfigWithOverrideValues() {

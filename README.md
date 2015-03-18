@@ -5,10 +5,9 @@ A bundle that allows you to quickly render a WYSIWYG editor ( currently supports
 Simply add a 'wysiwyg' element to your form and you're good to go.
 
 Features
- * Can render regular and inline WYSIWYG editors.
- * Supports automatic language detection from the Symfony locale
- * Allows seperate configuration per wysiwyg element
-
+* Can render regular and inline WYSIWYG editors.
+* Supports automatic language detection from the Symfony locale
+* Allows seperate configuration per wysiwyg element
 
 Installation
 -----------
@@ -77,6 +76,16 @@ This will add the following JSON object into the CKEditor widget
 	language: "nl"
 }
 ```
+
+Or, use the configuration builder to quickly create a config object for the CKEditor widget
+
+```php
+	$configbuilder = new CKConfigBuilder();
+	$configbuilder->setLanguage("nl");
+	$formbuilder->add('content', 'wysiwyg', 
+		array('attr' => ('ck_config' => $configbuilder->build() ) ) );
+```
+
 
 To find the full CKEditor configuration options, go to the [official website][2]
 
