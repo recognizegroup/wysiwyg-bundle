@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder,
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
- * Class Recognize\WysiwygBundle\RecognizeRecoCMSExtension
+ * Class Recognize\WysiwygBundle\RecognizeWysiwygExtension
  * @package Recognize\WysiwygBundle\DependencyInjection
  * @author Kevin te Raa <k.teraa@recognize.nl>
  */
