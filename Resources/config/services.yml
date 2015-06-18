@@ -8,3 +8,10 @@ services:
               class: Recognize\WysiwygBundle\Form\Type\InlineWysiwygType
               tags:
                   -  { name: form.type, alias: "inline_wysiwyg" }
+
+      recognize.wysiwyg.ckeditor.locales:
+              class: Recognize\WysiwygBundle\Twig\CkeditorLocaleFunction
+              arguments: [@service_container]
+              public: false
+              tags:
+                   - { name: twig.extension }

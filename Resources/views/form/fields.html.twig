@@ -6,6 +6,22 @@
         </div>
 
         {% block ck_scripts %}
+            {% if ck_config is defined and ck_config.language is defined %}
+                {% set locale = ck_config.language %}
+            {% else %}
+                {% set locale = app.request.getLocale() %}
+            {% endif %}
+            {% if ck_config is defined and ck_config.language is not defined %}
+                {% set ck_defaults = {"language": locale} %}
+                {% set ck_config = ck_config|merge( ck_defaults ) %}
+            {% endif %}
+            {% set translations_file = ckeditor_locale( locale ) %}
+
+            {% if translations_file != "" %}
+                <script type="text/javascript">
+                    {{ translations_file | raw }}
+                </script>
+            {% endif %}
             <script>
                 var message_shown = false;
 
@@ -15,8 +31,9 @@
 
                         {% if ck_config is not null %}
                         CKEDITOR.replace( '{{ full_name }}', {{ ck_config | json_encode | raw }} );
+
                         {% else %}
-                        CKEDITOR.replace( '{{ full_name }}', {language: "{{ app.request.getLocale() }}"} );
+                        CKEDITOR.replace( '{{ full_name }}', {language: "{{ locale }}"} );
                         {% endif %}
 
                         window.clearInterval( ckeditor_interval_{{ id }} );
@@ -44,6 +61,22 @@
         </div>
 
         {% block ck_inline_scripts %}
+            {% if ck_config is defined and ck_config.language is defined %}
+                {% set locale = ck_config.language %}
+            {% else %}
+                {% set locale = app.request.getLocale() %}
+            {% endif %}
+            {% if ck_config is defined and ck_config.language is not defined %}
+                {% set ck_defaults = {"language": locale} %}
+                {% set ck_config = ck_config|merge( ck_defaults ) %}
+            {% endif %}
+            {% set translations_file = ckeditor_locale( locale ) %}
+
+            {% if translations_file != "" %}
+                <script type="text/javascript">
+                    {{ translations_file | raw }}
+                </script>
+            {% endif %}
             <script>
                 var message_shown = false;
 
@@ -69,6 +102,7 @@
                     }
                 }, 200);
             </script>
+
         {% endblock %}
 
     {% endspaceless %}
