@@ -15,7 +15,7 @@ class InlineWysiwygType extends WysiwygType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'ck_config' => null,
+            'ck_config' => array(),
             'required' => false
         ));
     }
