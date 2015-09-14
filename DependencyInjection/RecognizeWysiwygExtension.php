@@ -24,6 +24,8 @@ class RecognizeWysiwygExtension extends Extension {
 
 		$container->setParameter('recognize_wysiwyg.config', $config);
 
+		$container->setParameter('recognize_wysiwyg.default', $config['default']);
+
 		$loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 		$loader->load('services.yml');
 	}

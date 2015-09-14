@@ -1,11 +1,13 @@
 services:
       recognize.wysiwyg.form.type.wysiwyg:
               class: Recognize\WysiwygBundle\Form\Type\WysiwygType
+              arguments: [%recognize_wysiwyg.default%]
               tags:
                   -  { name: form.type, alias: "wysiwyg" }
 
       recognize.wysiwyg.form.type.inline_wysiwyg:
               class: Recognize\WysiwygBundle\Form\Type\InlineWysiwygType
+              arguments: [%recognize_wysiwyg.default%]
               tags:
                   -  { name: form.type, alias: "inline_wysiwyg" }
 

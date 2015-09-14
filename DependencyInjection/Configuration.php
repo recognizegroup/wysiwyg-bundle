@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface {
 
 		$rootNode
 			->children()
+				->variableNode('default')
 			->end()
 		;
 

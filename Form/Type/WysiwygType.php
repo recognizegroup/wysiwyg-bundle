@@ -10,6 +10,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class WysiwygType extends AbstractType {
 
+    protected $ck_config;
+
+    public function __construct($default_config) {
+        if(is_array($default_config)) {
+            $this->ck_config = $default_config;
+        }
+    }
+
     public function getParent(){
         return "textarea";
     }
@@ -25,7 +33,7 @@ class WysiwygType extends AbstractType {
     }
 
     public function buildView(FormView $view, FormInterface $form, array $options){
-        $view->vars['ck_config'] = $options['ck_config'];
+        $view->vars['ck_config'] = array_replace_recursive($this->ck_config, $options['ck_config']);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options){
