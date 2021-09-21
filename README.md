@@ -21,7 +21,7 @@ Add the bundle to your composer.json
 	"repositories": [
 		{
 			"type": "git",
-			"url":  "git@bitbucket.org:recognize/wysiwyg-bundle.git"
+			"url":  "https://github.com/recognizegroup/wysiwyg-bundle.git"
 		}
 	],
 	 "require": {
@@ -148,7 +148,7 @@ Add the bundle to your composer.json
 	"repositories": [
 		{
 			"type": "git",
-			"url":  "git@bitbucket.org:recognize/wysiwyg-bundle.git"
+			"url":  "https://github.com/recognizegroup/wysiwyg-bundle.git"
 		}
 	],
 	 "require": {
